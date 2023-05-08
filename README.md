@@ -19,11 +19,11 @@ Para ello han diseñado una base de datos muy simple en la que tiene dos entidad
 
 El programa tendrá que soportar las siguientes operaciones, que se pasarán a través de línea de comandos:
 
-| id | **comando**                       	| **Descripción**                                                                    	|
-|---|-----------------------------------	|------------------------------------------------------------------------------------	|
-| 1 | `-a <ctfid> <grupoId> <puntuacion>` 	| Añade una participación del grupo `<grupoid>` en el CTF `<ctfid>` con la puntuación `<puntuacion>`. Recalcula el campo `mejorposCTFid` de los grupos en la tabla `GRUPOS`. |
-| 2 | `-d <ctfid> <grupoId>`              	| Elimina la participación del grupo `<grupoid>` en el CTF `<ctfid>`. Recalcula el campo `mejorposCTFid` de los grupos en la tabla `GRUPOS`. |
-| 3 | `-l <grupoId>`              	        | Si `<grupoId>` esta presente muestra la información del grupo `<grupoId>`, sino muestra la información de todos los grupos.    |
+| id | **comando**                       	   | **Descripción**                                                                    	                                                                                       |
+|----|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1  | `-a <ctfid> <grupoId> <puntuacion>` 	 | Añade una participación del grupo `<grupoid>` en el CTF `<ctfid>` con la puntuación `<puntuacion>`. Recalcula el campo `mejorposCTFid` de los grupos en la tabla `GRUPOS`. |
+| 2  | `-d <ctfid> <grupoId>`              	 | Elimina la participación del grupo `<grupoid>` en el CTF `<ctfid>`. Recalcula el campo `mejorposCTFid` de los grupos en la tabla `GRUPOS`.                                 |
+| 3  | `-l <grupoId>`              	         | Si `<grupoId>` esta presente muestra la información del grupo `<grupoId>`, sino muestra la información de todos los grupos.                                                |
 
 ### Entrada
 La ejecución de cualquiera de las operaciones 1, 2 o 3 descritas en la tabla. 
@@ -112,15 +112,15 @@ Para probar el programa se realizará distintas llamadas al programa, comparando
 
 
 ###### Conexión a base de datos.
-0. No lo hace; 1. Funciona adecuadamente, pero básico; 2. Funciona adecuadamente, y usado pool de conexiones.
+1. No lo hace; 1. Funciona adecuadamente, pero básico; 2. Funciona adecuadamente, y usado pool de conexiones.
 ###### Almacena información en base de datos. 
-0. No lo hace; 3. Funciona adecuadamente, pero básico; 6. Funciona adecuadamente, controla errores y de forma avanzada.
+1. No lo hace; 3. Funciona adecuadamente, pero básico; 6. Funciona adecuadamente, controla errores y de forma avanzada.
 ###### Consulta y Recupera información de la base de datos.
-0. No lo hace; 4. Funciona adecuadamente, pero básico; 8. Funciona adecuadamente, controla errores y de forma avanzada.
+1. No lo hace; 4. Funciona adecuadamente, pero básico; 8. Funciona adecuadamente, controla errores y de forma avanzada.
 ###### Actualiza información de la base de datos.
-0. No lo hace; 3. Funciona adecuadamente, pero básico; 6. Funciona adecuadamente, controla errores y de forma avanzada.
+1. No lo hace; 3. Funciona adecuadamente, pero básico; 6. Funciona adecuadamente, controla errores y de forma avanzada.
 ###### Gestión de la información
-0. No lo hace; 5. Funciona adecuadamente, pero básico; 10. Funciona adecuadamente, controla errores y de forma avanzada. Teniendo en cuenta aspectos como:
+1. No lo hace; 5. Funciona adecuadamente, pero básico; 10. Funciona adecuadamente, controla errores y de forma avanzada. Teniendo en cuenta aspectos como:
     - El código realizado es óptimo.
     - El código realizado es limpio y está comentado. 
     - Creación de código con responsabilidades bien identificadas.

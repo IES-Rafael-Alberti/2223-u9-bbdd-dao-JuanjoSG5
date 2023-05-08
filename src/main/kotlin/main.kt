@@ -1,11 +1,15 @@
+import programFunctionality.argsFilter.ArgsFilter
+
 data class Ctf(val id: Int, val grupoId: Int, val puntuacion: Int)
 data class Grupo(val grupoid: Int, val mejorCtfId: Int = 0)
 
 fun main(args: Array<String>) {
-
-    val participaciones = listOf(Ctf(1, 1, 3), Ctf(1, 2, 101), Ctf(2, 2, 3), Ctf(2, 1, 50), Ctf(2, 3, 1), Ctf(3, 1, 50), Ctf(3, 3, 5))
+    println(args[0])
+    println(args[1])
+    println(args[2])
+    val participaciones = CtfParticipants.participaciones
+    val filterParameters = ArgsFilter(args)
     val mejoresCtfByGroupId = calculaMejoresResultados(participaciones)
-    println(mejoresCtfByGroupId)
 
 }
 
@@ -21,22 +25,28 @@ fun main(args: Array<String>) {
  */
 private fun calculaMejoresResultados(participaciones: List<Ctf>): MutableMap<Int, Pair<Int, Ctf>> {
     val participacionesByCTFId = participaciones.groupBy { it.id }
-    var participacionesByGrupoId = participaciones.groupBy { it.grupoId }
+    val participacionesByGrupoId = participaciones.groupBy { it.grupoId }
+    // Guarda id del participante, la id del grupo y la puntuacion maxima del participante en ese grupo
     val mejoresCtfByGroupId = mutableMapOf<Int, Pair<Int, Ctf>>()
     participacionesByCTFId.values.forEach { ctfs ->
+        // Ordena el grupo segun la puntucion minima debido al valor ASCII por
+        // lo que usamos el reverse para obtener el maximo
         val ctfsOrderByPuntuacion = ctfs.sortedBy { it.puntuacion }.reversed()
         participacionesByGrupoId.keys.forEach { grupoId ->
+            // grupoID toma el valor de uno y busca el primer indice en el que es 1
             val posicionNueva = ctfsOrderByPuntuacion.indexOfFirst { it.grupoId == grupoId }
             if (posicionNueva >= 0) {
                 val posicionMejor = mejoresCtfByGroupId.getOrDefault(grupoId, null)
                 if (posicionMejor != null) {
-                    if (posicionNueva < posicionMejor.first)
-                        mejoresCtfByGroupId.set(grupoId, Pair(posicionNueva, ctfsOrderByPuntuacion.get(posicionNueva)))
-                } else
-                    mejoresCtfByGroupId.set(grupoId, Pair(posicionNueva, ctfsOrderByPuntuacion.get(posicionNueva)))
-
+                    if (posicionNueva < posicionMejor.first){
+                        mejoresCtfByGroupId[grupoId] = Pair(posicionNueva, ctfsOrderByPuntuacion[posicionNueva])
+                    }
+                } else {
+                    mejoresCtfByGroupId[grupoId] = Pair(posicionNueva, ctfsOrderByPuntuacion[posicionNueva])
+                }
             }
         }
     }
+
     return mejoresCtfByGroupId
 }
