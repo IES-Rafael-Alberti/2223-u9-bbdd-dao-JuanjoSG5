@@ -2,17 +2,18 @@ package programFunctionality.executingProgram.commandHandling
 
 import programFunctionality.executingProgram.mediator.ConcreteMediator
 
-class ThirdCommandExecution(mediator: ConcreteMediator, args:Array<String>): CommandExecution {
-    private var checker: Int = 0
+class ThirdCommandValidator(private val mediator: ConcreteMediator, private val args:Array<String>): CommandValidator {
+    internal var checker: Int = 0
     private val grupoId : Int = args[2].toInt()
     private val grupoIdList : List<Int> = CtfParticipants.participaciones.map {it.grupoId}
 
-
-    override fun executeCommand() {
-        TODO("Not yet implemented")
+    init {
+        checkValues()
+        mediator.selectCommand(this)
     }
 
     override fun checkValues() {
+        require(args.size == 2) {"ERROR: El número de parametros no es adecuado."}
         if (grupoId in grupoIdList){
             checker = 1
         }

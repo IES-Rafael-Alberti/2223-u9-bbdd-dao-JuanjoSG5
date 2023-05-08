@@ -1,12 +1,13 @@
 import programFunctionality.argsFilter.ArgsFilter
 
 data class Ctf(val id: Int, val grupoId: Int, val puntuacion: Int)
-data class Grupo(val grupoid: Int, val mejorCtfId: Int = 0)
+data class Grupo(val grupoid: Int,val mejorCtfId: Int = 0)
 
 fun main(args: Array<String>) {
     println(args[0])
     println(args[1])
     println(args[2])
+
     val participaciones = CtfParticipants.participaciones
     val filterParameters = ArgsFilter(args)
     val mejoresCtfByGroupId = calculaMejoresResultados(participaciones)

@@ -1,7 +1,7 @@
 package programFunctionality.executingProgram.commandHandling
 
-interface CommandExecution {
+interface CommandValidator {
 
-    fun executeCommand()
+
     fun checkValues()
 }

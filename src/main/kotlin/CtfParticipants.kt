@@ -1,5 +1,5 @@
 object CtfParticipants {
-    val participaciones = listOf(
+    var participaciones = mutableListOf(
         Ctf(1, 1, 3),
         Ctf(1, 2, 101),
         Ctf(2, 2, 3),

@@ -1,7 +1,7 @@
 package programFunctionality.executingProgram.mediator
 
-import programFunctionality.executingProgram.commandHandling.CommandExecution
+import programFunctionality.executingProgram.commandHandling.CommandValidator
 
 interface ExecutingMediator {
-    fun select(sender: CommandExecution, args: Any? = null)
+    fun selectCommand(sender: CommandValidator)
 }

@@ -1,8 +1,8 @@
 package programFunctionality.argsFilter
 
-import programFunctionality.executingProgram.commandHandling.FirstCommandExecution
-import programFunctionality.executingProgram.commandHandling.SecondCommandExecution
-import programFunctionality.executingProgram.commandHandling.ThirdCommandExecution
+import programFunctionality.executingProgram.commandHandling.FirstCommandValidator
+import programFunctionality.executingProgram.commandHandling.SecondCommandValidator
+import programFunctionality.executingProgram.commandHandling.ThirdCommandValidator
 import programFunctionality.executingProgram.mediator.ConcreteMediator
 
 
@@ -17,17 +17,17 @@ const val ThirdCommand: String = "-l"
  */
 class ArgsFilter(args:Array<String>) {
     var filterResult = 0
-    private val mediator = ConcreteMediator()
+    private val mediator = ConcreteMediator(args)
     init {
         val firstCheck : Boolean  = firstChecker(args)
         val secondCheck : Boolean = secondChecker(args)
         val thirdCheck : Boolean = thirdChecker(args)
         if (firstCheck) {
-            FirstCommandExecution(mediator,args)
+            FirstCommandValidator(mediator,args)
         }else if (secondCheck){
-            SecondCommandExecution(mediator,args)
+            SecondCommandValidator(mediator,args)
         }else if (thirdCheck){
-            ThirdCommandExecution(mediator,args)
+            ThirdCommandValidator(mediator,args)
         }else{
             error("Introduzca uno de los comandos del sistema")
         }
